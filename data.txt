@@ -1,0 +1,22 @@
+DEFINE a 1
+DEFINE b -6
+DEFINE c 5
+PUSH a
+PUSH 2 //2, a
+* //2*a
+PUSH b
+PUSH -1
+* //-b, 2*a
+PUSH b
+PUSH b
+* //b^2, -b, 2*a
+PUSH 4
+PUSH a
+* //4a, b^2, -b, 2*a
+PUSH c
+* //4ac, b^2, -b, 2*a
+- //b^2 - 4ac, -b, 2*a
+SQRT // sqrt(b^2 - 4ac), -b, 2*a
++ //-b + sqrt(b^2 - 4ac), 2*a
+/ //-b + sqrt(b^2 - 4ac) / 2*a
+PRINT
