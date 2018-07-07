@@ -6,15 +6,8 @@ import java.util.Stack;
 
 // Сложение
 public class Plus extends Command {
-    @In(arg = "STACK")
+    @In(arg = ArgType.STACK)
     private Stack<Double> stack;
-
-    public Plus() {
-    }
-
-    public Plus(Stack stack) {
-        this.stack = stack;
-    }
 
     @Override
     public void execute() throws CalcException {

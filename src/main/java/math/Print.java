@@ -6,16 +6,8 @@ import java.util.Stack;
 
 //Печать элемента стека
 public class Print extends Command {
-    @In(arg = "STACK")
+    @In(arg = ArgType.STACK)
     private Stack<Double> stack;
-
-    public Print() {
-    }
-
-    public Print(Stack<Double> stack) {
-
-        this.stack = stack;
-    }
 
     @Override
     public void execute() throws CalcException {

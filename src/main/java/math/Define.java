@@ -2,23 +2,14 @@ package math;
 
 import exception.CalcException;
 
-import java.util.HashMap;
+import java.util.Map;
 
 //Установка
 public class Define extends Command {
-    @In(arg = "VALUES")
-    private HashMap<String, Double> map;
-    @In(arg="TOKENS")
+    @In(arg = ArgType.VALUES)
+    private Map<String, Double> map;
+    @In(arg= ArgType.TOKENS)
     private String[] tokens;
-
-    public Define() {
-    }
-
-    public Define(HashMap<String, Double> map, String[] args) {
-
-        this.map = map;
-        this.tokens = args;
-    }
 
     @Override
     public void execute() throws CalcException {

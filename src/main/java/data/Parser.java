@@ -20,10 +20,6 @@ public class Parser {
             while (sc.hasNext()) { //Парсим
                 args = sc.nextLine().split(" "); //Массив элементов, разделенных " "
 
-//                Построчный вывод содержимого файла
-//                for (String t : args) { System.out.print(t + " ");}
-//                System.out.println();
-
                 cmd = CommandFactory.create(args);
 
                 commands.add(cmd);

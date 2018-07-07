@@ -6,16 +6,9 @@ import java.util.Stack;
 
 // Вычитание
 public class Minus extends Command {
-    @In(arg = "STACK")
+    @In(arg = ArgType.STACK)
     private Stack<Double> stack;
 
-    public Minus() {
-    }
-
-    public Minus(Stack<Double> stack) {
-
-        this.stack = stack;
-    }
 
     @Override
     public void execute() throws CalcException {

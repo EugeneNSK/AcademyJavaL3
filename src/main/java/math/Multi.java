@@ -6,16 +6,8 @@ import java.util.Stack;
 
 // Умножение
 public class Multi extends Command {
-    @In(arg = "STACK")
+    @In(arg = ArgType.STACK)
     private Stack<Double> stack;
-
-    public Multi() {
-    }
-
-    public Multi(Stack<Double> stack) {
-
-        this.stack = stack;
-    }
 
     @Override
     public void execute() throws CalcException {

@@ -7,21 +7,12 @@ import java.util.Stack;
 
 //Загрузка переменных в стэк
 public class Push extends Command {
-    @In(arg = "STACK")
+    @In(arg = ArgType.STACK)
     private Stack<Double> stack;
-    @In(arg = "VALUES")
+    @In(arg = ArgType.VALUES)
     private Map<String, Double> map;
-    @In(arg="TOKENS")
+    @In(arg=ArgType.TOKENS)
     private String[] tokens;
-
-    public Push() {
-    }
-
-    public Push(Stack<Double> s, Map<String, Double> m, String[] t) {
-        this.stack = s;
-        this.map = m;
-        this.tokens = t;
-    }
 
     @Override
     public void execute() throws CalcException {

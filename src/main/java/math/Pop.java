@@ -6,16 +6,8 @@ import java.util.Stack;
 
 //Удаление последнего элемента стэка
 public class Pop extends Command{
-    @In(arg = "STACK")
+    @In(arg = ArgType.STACK)
     private Stack<Double> stack;
-
-    public Pop() {
-    }
-
-    public Pop(Stack<Double> stack) {
-
-        this.stack = stack;
-    }
 
     @Override
     public void execute() throws CalcException {

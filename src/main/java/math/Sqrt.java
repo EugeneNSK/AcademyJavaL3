@@ -8,16 +8,8 @@ import static java.lang.Double.NaN;
 
 // Квадратный корень
 public class Sqrt extends Command {
-    @In(arg = "STACK")
+    @In(arg = ArgType.STACK)
     private Stack<Double> stack;
-
-    public Sqrt() {
-    }
-
-    public Sqrt(Stack<Double> stack) {
-
-        this.stack = stack;
-    }
 
     @Override
     public void execute() throws CalcException {

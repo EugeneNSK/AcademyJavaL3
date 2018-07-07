@@ -25,7 +25,6 @@ public class Run {
             }
 
             for (Command c : Parser.pars(is)) {
-                System.out.println("Выполняем команду: " + c);
                 c.execute();
             }
         }
