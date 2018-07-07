@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Stack;
 
 // Деление
-public class Division extends Command {
+public class Division implements Command {
     @In(arg = ArgType.STACK)
     private Stack<Double> stack;
 
@@ -17,10 +17,15 @@ public class Division extends Command {
             double div=stack.pop();
             div/=stack.pop();
             stack.push(div);
-            System.out.println("Stack после деления :" +stack);
+//            System.out.println("Stack после деления :" +stack);
         }
         else{
             throw new CalcException("Division: not enough stack");
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Division";
     }
 }

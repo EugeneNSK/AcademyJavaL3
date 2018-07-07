@@ -2,7 +2,7 @@ package math;
 
 import exception.CalcException;
 
-public abstract class Command {
+public interface Command {
 
-    abstract public void execute() throws CalcException;
+    void execute() throws CalcException;
 }

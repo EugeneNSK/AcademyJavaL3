@@ -5,7 +5,7 @@ import exception.CalcException;
 import java.util.Map;
 
 //Установка
-public class Define extends Command {
+public class Define implements Command {
     @In(arg = ArgType.VALUES)
     private Map<String, Double> map;
     @In(arg= ArgType.TOKENS)
@@ -17,7 +17,7 @@ public class Define extends Command {
         try {
             String key = tokens[1];
             Double val = Double.parseDouble(tokens[2]);
-            System.out.println( "key: " + key + " : val: " + val);
+//            System.out.println( "key: " + key + " : val: " + val);
             map.put(key, val);
         }
         catch (ArrayIndexOutOfBoundsException ex1){
@@ -29,5 +29,10 @@ public class Define extends Command {
         catch (NullPointerException ex3) {
             throw new CalcException("Define: NPE");
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Define";
     }
 }

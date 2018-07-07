@@ -5,7 +5,7 @@ import exception.CalcException;
 import java.util.Stack;
 
 // Вычитание
-public class Minus extends Command {
+public class Minus implements Command {
     @In(arg = ArgType.STACK)
     private Stack<Double> stack;
 
@@ -18,10 +18,15 @@ public class Minus extends Command {
             razn += stack.pop();
             stack.push(razn);
 
-            System.out.println("Stack после вычитания :" + stack);
+//            System.out.println("Stack после вычитания :" + stack);
         }
         else{
             throw new CalcException("Minus: not enough stack");
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Minus";
     }
 }

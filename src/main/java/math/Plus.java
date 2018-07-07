@@ -5,7 +5,7 @@ import exception.CalcException;
 import java.util.Stack;
 
 // Сложение
-public class Plus extends Command {
+public class Plus implements Command {
     @In(arg = ArgType.STACK)
     private Stack<Double> stack;
 
@@ -18,11 +18,15 @@ public class Plus extends Command {
                 summ+= stack.pop();
             }
             stack.push(summ);
-            System.out.println("Stack после сложения :" +stack);
+//            System.out.println("Stack после сложения :" +stack);
         }
         else{
             throw new CalcException("Plus: not enough stack");
         }
+    }
 
+    @Override
+    public String toString() {
+        return "Plus";
     }
 }

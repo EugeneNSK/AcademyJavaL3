@@ -5,7 +5,7 @@ import exception.CalcException;
 import java.util.Stack;
 
 // Умножение
-public class Multi extends Command {
+public class Multi implements Command {
     @In(arg = ArgType.STACK)
     private Stack<Double> stack;
 
@@ -24,6 +24,11 @@ public class Multi extends Command {
             throw new CalcException("Empty stack by Multi");
         }
 
-        System.out.println("Stack после умножения :" +stack);
+//        System.out.println("Stack после умножения :" +stack);
+    }
+
+    @Override
+    public String toString() {
+        return "Multi";
     }
 }

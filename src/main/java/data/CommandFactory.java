@@ -4,7 +4,9 @@ import math.Command;
 import math.In;
 import org.apache.log4j.Logger;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Field;
+import java.lang.reflect.Proxy;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -12,11 +14,11 @@ import java.util.Stack;
 
 public class CommandFactory {
 
-    private static final Logger logger = Logger.getLogger(CommandFactory.class);
 
-    private static Stack <Double> stack = new Stack();
-    private static Map <String, Double> map = new HashMap<>();
-    private static String [] tokens;
+
+    private static Stack<Double> stack = new Stack();
+    private static Map<String, Double> map = new HashMap<>();
+    private static String[] tokens;
 
     private static Properties prop;
 
@@ -31,7 +33,7 @@ public class CommandFactory {
 
     }
 
-    public static Command create (String[] args){
+    public static Command create(String[] args) {
 
         Command cmd = null;
         Class<?> aClass;
@@ -41,22 +43,22 @@ public class CommandFactory {
         try {
             aClass = Class.forName(s);
             cmd = (Command) aClass.newInstance();
-            Field [] classFields = aClass.getDeclaredFields();
+            Field[] classFields = aClass.getDeclaredFields();
 
-            for (Field field:classFields){
+            for (Field field : classFields) {
                 field.setAccessible(true); //разрешение редактирования private полей
                 In annotation = field.getAnnotation(In.class);
 
-                switch (annotation.arg()){
-                    case STACK:{
+                switch (annotation.arg()) {
+                    case STACK: {
                         field.set(cmd, stack);
                         break;
                     }
-                    case VALUES:{
+                    case VALUES: {
                         field.set(cmd, map);
                         break;
                     }
-                    case TOKENS:{
+                    case TOKENS: {
                         field.set(cmd, tokens);
                         break;
                     }
@@ -71,12 +73,14 @@ public class CommandFactory {
             System.out.println("Ошибка создания экземпляра класса: IllegalAccessException");
         }
 
+        Command proxyCmd = (Command) Proxy.newProxyInstance(
+                ClassLoader.getSystemClassLoader(),
+                new Class[]{Command.class},
+                new LogInvocationHandler(cmd));
 
-
-
-
-        return cmd;
+        return proxyCmd;
     }
+
 
     public static Stack<Double> getStack() {
         return stack;
